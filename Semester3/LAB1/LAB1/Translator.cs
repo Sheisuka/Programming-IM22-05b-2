@@ -12,12 +12,6 @@
 			symbols = ".,/:\\; !@#$%^&*()_+=-?%";
         }
 
-		private string getWord()
-		{
-			Console.Write("Введите слово -> ");
-			return Console.ReadLine();
-		}
-
 		private char getSymbol()
 		{
             Console.Write("Введите разделяющий символ -> ");

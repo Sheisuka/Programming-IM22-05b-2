@@ -9,13 +9,13 @@ namespace TarabarianTranslator
         {
             var translator = new Translator();
             Console.WriteLine("Введите текст, чтобы закончить не вводите ничего");
-            while (true)
-                {
-                    string text = Console.ReadLine();
-                    if (text.Length == 0)
-                        break;
-                    Console.WriteLine(translator.translateWord(text));
-                }
+            string text = Console.ReadLine();
+            while (text.Length != 0)
+            {
+                Console.WriteLine(translator.translateWord(text));
+                text = Console.ReadLine();
+            }
+            Console.WriteLine("Завершение");
         }
     }
 }
