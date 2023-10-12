@@ -1,3 +1,6 @@
+*.jpg
 *vs*
 *bin*
 *obj*
+*DS_Store*
+*test*
