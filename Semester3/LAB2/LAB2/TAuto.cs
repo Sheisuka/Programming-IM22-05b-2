@@ -1,0 +1,84 @@
+﻿using System;
+using System.IO;
+
+namespace LAB2
+{
+	public class TAuto
+	{
+		private string Brand;
+		private DateTime DateOfIssue;
+		private int EnginePower;
+		private string ImageUrl;
+
+		public TAuto(string brand, DateTime dateOfIssue, int enginePower, string imageUrl)
+		{
+			this.brand = brand;
+			this.dateOfIssue = dateOfIssue;
+			this.enginePower = enginePower;
+			this.imageUrl = imageUrl;
+		}
+
+		public string brand { get => Brand; init => Brand = value; }
+        public DateTime dateOfIssue { get => DateOfIssue; init => DateOfIssue = value; }
+        public int enginePower { get => EnginePower;
+			set
+			{
+				if (value <= 0)
+				{
+					throw new ArgumentException("Мощность двигателя не может быть меньше нуля");
+				}
+				else
+				{
+					EnginePower = value;
+				}
+			}
+		}
+        public string imageUrl { get => ImageUrl;
+			set
+			{
+				if (!File.Exists(value))
+				{
+					throw new ArgumentException("Файл по ссылке не найден");
+				}
+				else
+				{
+					ImageUrl = value;
+				}
+			}
+		}
+
+        public int GetAnnualTax()
+        {
+			return enginePower * 4;
+        }
+
+		public DateTime GetNextCarInspection()
+		{
+			DateTime currentDate = DateTime.Now;
+			int yearsPassed = currentDate.Year - dateOfIssue.Year;
+			int yearsLeft;
+
+			if (yearsPassed <= 7)
+			{
+				yearsLeft = yearsPassed + (2 - (yearsPassed % 2));
+			}
+			else
+			{
+				yearsLeft = yearsPassed + 1;
+			}
+
+			return dateOfIssue.AddYears(yearsLeft);
+		}
+
+		public override string ToString()
+		{
+			string result = $"Информация об автомобиле:\n\tМарка: {this.brand}" +
+							$"\n\tДата выпуска {this.dateOfIssue.ToString("dd.MM.yyyy")}" +
+							$"\n\tМощность двигателя: {this.enginePower} л.с." +
+							$"\n\tСсылка к изображению: {this.imageUrl}";
+			return result;
+        }
+
+    }
+}
+
