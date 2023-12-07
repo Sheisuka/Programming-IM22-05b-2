@@ -20,6 +20,8 @@ namespace LAB5
 			return this.carPark.Where(car => car.GetNextCarInspection().Month == curMonth).ToList();
 		}
 
+
+
         public void LoadFromTxt(string filePath)
 		{ 
 			if (File.Exists(filePath)) {
