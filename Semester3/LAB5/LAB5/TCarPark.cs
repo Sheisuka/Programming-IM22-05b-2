@@ -57,6 +57,20 @@ namespace LAB5
 			}
 		}
 
+		public void DisplayCars(List<TAuto>? cars = null)
+		{
+			string result;
+			if (cars is null) { 
+				result = String.Join("\n", this.carPark);
+			}
+			else
+			{
+				result = String.Join("\n", cars);
+			}
+
+			Console.WriteLine(result);
+        }
+
         // TAuto string brand, DateTime dateOfIssue, int enginePower, string imageUrl
         // TTruck string brand, DateTime dateOfIssue, int enginePower, string imageUrl, int liftCap
         private TAuto ParseCar(string carDataLine)

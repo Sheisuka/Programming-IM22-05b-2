@@ -85,7 +85,8 @@ namespace LAB5
 		{
 			string result = $"Информация об автомобиле:\n\tМарка: {this.brand}" +
 							$"\n\tДата выпуска {this.dateOfIssue.ToString("dd.MM.yyyy")}" +
-							$"\n\tМощность двигателя: {this.enginePower} л.с." +
+                            $"\n\tДата следующего ТО {this.GetNextCarInspection().ToString("dd.MM.yyyy")}" +
+                            $"\n\tМощность двигателя: {this.enginePower} л.с." +
 							$"\n\tСсылка к изображению: {this.imageUrl}";
 			return result;
         }

@@ -96,15 +96,12 @@ namespace LAB5
                 cargoNames.Add(cargo.name);
             }
 
-            string result = $"Информация об автомобиле:\n\tМарка: {this.brand}" +
-                            $"\n\tДата выпуска {this.dateOfIssue.ToString("dd.MM.yyyy")}" +
-                            $"\n\tДата следующего ТО {this.GetNextCarInspection().ToString("dd.MM.yyyy")}" +
-                            $"\n\tМощность двигателя: {this.enginePower} л.с." +
+            string result = base.ToString() +
                             $"\n\tГрузоподъемность: {this.liftCap}" +
                             $"\n\tСвободная грузоподъемность: {this.currentCap}" +
-                            $"\n\tПеревозимый груз: {String.Join(", ", cargoNames)}" +
-                            $"\n\tСсылка к изображению: {this.imageUrl}";
-			return result;
+                            $"\n\tПеревозимый груз: {String.Join(", ", cargoNames)}";
+
+            return result;
         }
     }
 }
